@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+// makes it so that "std::" doesn't have to be entered before the commands
+using namespace std;
+
+// prototypes
+bool player_healed{};
+string input{};
+string input_heal{};
+void main_question();
+void health_pickup();
+
+// starts the program
+int main()
+{
+	main_question();
+
+	return 0;
+}
+
+// creates the first bit of dialogue that is required to progress to the second bit of dialogue
+void main_question()
+{
+	cout << "Are you fully healed? ";
+	cin >> input;
+
+	if (input == "yes" || input == "Yes")
+	{
+		player_healed == true;
+	}
+
+	else if (input == "no" || input == "No")
+	{
+		player_healed == false;
+		health_pickup();
+	}
+}
+
+// creates the second bit of dialogue that allows the player to heal themselves
+void health_pickup()
+{
+	while (player_healed == false)
+	{
+		cout << "Would you like to use the health pickup? ";
+		cin >> input_heal;
+
+		if (input_heal == "no" || input_heal == "No")
+			break;
+		
+		else if (input_heal == "yes" || input_heal == "Yes")
+		{
+			cout << "You are now fully healed" << endl;
+			player_healed == true;
+			break;
+		}
+	}
+}
