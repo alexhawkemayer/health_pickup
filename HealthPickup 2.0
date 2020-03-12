@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+void init_q();
+void heal();
+
+int main()
+{
+
+	init_q();
+
+	return 0;
+}
+
+void init_q()
+{
+
+	bool fhealth{ true };
+
+	do
+	{
+		std::string input{};
+
+		std::cout << "Are you hurt? " << std::endl;
+		std::cin >> input;
+
+		if (input == "yes" || input == "Yes" || input == "y" || input == "Y")
+		{
+			heal();
+			break;
+		}
+
+		else if (input == "no" || input == "No" || input == "n" || input == "N")
+			std::cout << std::endl;
+
+		else
+			std::cout << "Error: invalid input." << std::endl;
+	} while (fhealth == true);
+}
+
+void heal()
+{
+	std::string input{};
+
+	std::cout << "Would you like to pick up the health pack?" << std::endl;
+	std::cin >> input;
+
+
+	if (input == "yes" || input == "Yes" || input == "y" || input == "Y")
+		std::cout << "You are fully healed" << std::endl;
+	else if (input == "no" || input == "No" || input == "n" || input == "N")
+		main();
+	else
+	{
+		std::cout << "Error: input invalid" << std::endl;
+		heal();
+	}
+}
